@@ -1,0 +1,23 @@
+<div *ngFor="let question of listQuestion">
+    <h3>{{question.question}}</h3>
+
+    <div *ngIf="question.type === 'paragraph'">
+        <p>{{question.questionContent}}</p>
+    </div>
+    <div *ngIf="question.type === 'checkbox'">
+        <div *ngFor="let ans of question.arrayAnswers">
+            <div class="form-check">
+                <label class="form-check-label" for="exampleCheck1">{{ans}}</label>
+            </div>
+        </div>
+        <div class="form-check" *ngIf="question.otherAnswer">
+            <label class="form-check-label" for="exampleCheck1">Other</label>
+        </div>
+    </div>
+
+</div>
+<div>
+    <a href="" (click)="goBack()">
+        Back to Forms Builder
+    </a>
+</div>

@@ -1,0 +1,28 @@
+<div>
+    <div *ngFor="let question of listQuestion, let i=index">
+        <h3 class="d-inline-block">{{question.question}}</h3>
+        <span class="d-inline-block" *ngIf="question.require">*</span>
+
+        <div *ngIf="question.type === 'paragraph'">
+            <textarea id="question"></textarea>
+        </div>
+        <div *ngIf="question.type === 'checkbox'">
+            <div *ngFor="let ans of question.arrayAnswers">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">{{ans}}</label>
+                </div>
+            </div>
+            <div class="form-check" *ngIf="question.otherAnswer">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Other</label>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div>
+    <app-add-question-modal (questionSubmit)="onQuestionSubmit($event)"></app-add-question-modal>
+</div>
+<button type="button" (click)="goToReviewAnswer()">Review my answers >
+</button>
